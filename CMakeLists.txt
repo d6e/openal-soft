@@ -8,6 +8,8 @@ ENDIF(COMMAND CMAKE_POLICY)
 
 SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
+set(CMAKE_MACOSX_RPATH 1)
+
 INCLUDE(CheckFunctionExists)
 INCLUDE(CheckLibraryExists)
 INCLUDE(CheckSharedFunctionExists)
