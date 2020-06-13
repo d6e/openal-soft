@@ -670,14 +670,14 @@ ENDIF()
 
 # Check CoreAudio backend
 IF(COREAUDIO)
-    CHECK_INCLUDE_FILE(/System/Volumes/Data/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreAudio.framework/Headers/CoreAudio.h HAVE_COREAUDIO_FRAMEWORK)
+    CHECK_INCLUDE_FILE("${CMAKE_SOURCE_DIR}/MacOSX10.15.sdk/System/Library/Frameworks/CoreAudio.framework/Headers/CoreAudio.h" HAVE_COREAUDIO_FRAMEWORK)
     IF(HAVE_COREAUDIO_FRAMEWORK)
         SET(HAVE_COREAUDIO 1)
         SET(ALC_OBJS  ${ALC_OBJS} Alc/backends/coreaudio.c)
         SET(BACKENDS  "${BACKENDS} CoreAudio,")
-        SET(EXTRA_LIBS /System/Volumes/Data/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreAudio.framework ${EXTRA_LIBS})
-        SET(EXTRA_LIBS /System/Volumes/Data/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AudioUnit.framework ${EXTRA_LIBS})
-        SET(EXTRA_LIBS /System/Volumes/Data/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/ApplicationServices.framework ${EXTRA_LIBS})
+        SET(EXTRA_LIBS "${CMAKE_SOURCE_DIR}/MacOSX10.15.sdk/System/Library/Frameworks/CoreAudio.framework" ${EXTRA_LIBS})
+        SET(EXTRA_LIBS "${CMAKE_SOURCE_DIR}/MacOSX10.15.sdk/System/Library/Frameworks/AudioUnit.framework" ${EXTRA_LIBS})
+        SET(EXTRA_LIBS "${CMAKE_SOURCE_DIR}/MacOSX10.15.sdk/System/Library/Frameworks/ApplicationServices.framework" ${EXTRA_LIBS})
 
         # Some versions of OSX may need the AudioToolbox framework. Add it if
         # it's found.
