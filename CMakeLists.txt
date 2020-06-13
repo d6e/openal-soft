@@ -57,7 +57,7 @@ OPTION(REQUIRE_DSOUND     "Require DirectSound backend"        OFF)
 OPTION(REQUIRE_WINMM      "Require Windows Multimedia backend" OFF)
 OPTION(REQUIRE_PORTAUDIO  "Require PortAudio backend"          OFF)
 OPTION(REQUIRE_PULSEAUDIO "Require PulseAudio backend"         OFF)
-OPTION(REQUIRE_COREAUDIO  "Require CoreAudio backend"          OFF)
+OPTION(REQUIRE_COREAUDIO  "Require CoreAudio backend"          ON)
 OPTION(REQUIRE_OPENSL     "Require OpenSL backend"             OFF)
 
 OPTION(DLOPEN  "Check for the dlopen API for loading optional libs"  ON)
@@ -670,14 +670,14 @@ ENDIF()
 
 # Check CoreAudio backend
 IF(COREAUDIO)
-    CHECK_INCLUDE_FILE(/System/Library/Frameworks/CoreAudio.framework/Headers/CoreAudio.h HAVE_COREAUDIO_FRAMEWORK)
+    CHECK_INCLUDE_FILE(/System/Volumes/Data/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreAudio.framework/Headers/CoreAudio.h HAVE_COREAUDIO_FRAMEWORK)
     IF(HAVE_COREAUDIO_FRAMEWORK)
         SET(HAVE_COREAUDIO 1)
         SET(ALC_OBJS  ${ALC_OBJS} Alc/backends/coreaudio.c)
         SET(BACKENDS  "${BACKENDS} CoreAudio,")
-        SET(EXTRA_LIBS /System/Library/Frameworks/CoreAudio.framework ${EXTRA_LIBS})
-        SET(EXTRA_LIBS /System/Library/Frameworks/AudioUnit.framework ${EXTRA_LIBS})
-        SET(EXTRA_LIBS /System/Library/Frameworks/ApplicationServices.framework ${EXTRA_LIBS})
+        SET(EXTRA_LIBS /System/Volumes/Data/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreAudio.framework ${EXTRA_LIBS})
+        SET(EXTRA_LIBS /System/Volumes/Data/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AudioUnit.framework ${EXTRA_LIBS})
+        SET(EXTRA_LIBS /System/Volumes/Data/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/ApplicationServices.framework ${EXTRA_LIBS})
 
         # Some versions of OSX may need the AudioToolbox framework. Add it if
         # it's found.
